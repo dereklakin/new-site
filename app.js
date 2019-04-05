@@ -17,15 +17,15 @@ var site          = require('./data/site');
 var configDb      = require('./config/database.js');
 require('./config/passport')(passport);
 
-// Configurtation.
+// Configuration.
 appInsights.setup("<appInsights-key>").start();
-mongoose.connect(configDb.url);
+mongoose.connect(configDb.url, { useMongoClient: true });
 
 // View engine setup.
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-// uncomment after placing your favicon in /public
+// Un-comment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
